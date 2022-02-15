@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class User(models.Model):
     user_id = models.AutoField(primary_key=True)
@@ -24,6 +24,7 @@ class NFT_Collection(models.Model):
     # profile_pic = models.ImageField(upload_to='nftpictures')
     description = models.TextField(blank=True)
     owner = models.ForeignKey(Account, on_delete = models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class NFT(models.Model):
     nft_id = models.AutoField(primary_key=True)
