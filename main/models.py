@@ -21,7 +21,7 @@ class NFT_Collection(models.Model):
     nft_collection_id = models.AutoField(primary_key=True)
     collection_name = models.CharField(max_length=30)
     creator = models.CharField(max_length=50)
-    profile_pic = models.ImageField(upload_to='nftpictures')
+    # profile_pic = models.ImageField(upload_to='nftpictures')
     description = models.TextField(blank=True)
     owner = models.ForeignKey(Account, on_delete = models.CASCADE)
 
@@ -33,7 +33,7 @@ class NFT(models.Model):
     description = models.TextField(blank=True)
     collection_name = models.ForeignKey(NFT_Collection, on_delete = models.CASCADE)
     blockchain = models.CharField
-    nft_image = models.ImageField(upload_to='nftpictures')
+    # nft_image = models.ImageField(upload_to='nftpictures')
 
 class Nft_Bid(models.Model):
     nft_bid_id = models.AutoField(primary_key=True)
