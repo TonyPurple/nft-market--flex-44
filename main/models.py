@@ -2,10 +2,10 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-class User(models.Model):
-    user_id = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=50)
+# class User(models.Model):
+#     user_id = models.AutoField(primary_key=True)
+#     username = models.CharField(max_length=100)
+#     password = models.CharField(max_length=50)
 
 # class Wallet(models.Model):
 #     wallet_id = models.AutoField(primary_key=True)
@@ -28,7 +28,7 @@ class User(models.Model):
 #     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class NFT(models.Model):
-    nft_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     nft_name = models.CharField(max_length=50)
     token_id = models.IntegerField(max_length=5)
     # supply = models.IntegerField
@@ -36,7 +36,14 @@ class NFT(models.Model):
     description = models.TextField(blank=True)
     # collection_name = models.ForeignKey(NFT_Collection, on_delete = models.CASCADE)
     # nft_image = models.ImageField(upload_to='nftpictures')
+        # Add the foreign key linking to a user instance
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+def __str__(self):
+    return self.nft_name
+
+def get_absolute_url(self):
+    return reverse('detail', kwargs={'nft_id': self.id})
 
 # class Nft_Bid(models.Model):
 #     nft_bid_id = models.AutoField(primary_key=True)
