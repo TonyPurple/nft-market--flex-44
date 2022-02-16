@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 class User(models.Model):
@@ -34,8 +35,8 @@ class NFT(models.Model):
     blockchain = models.CharField(max_length=10)
     description = models.TextField(blank=True)
     # collection_name = models.ForeignKey(NFT_Collection, on_delete = models.CASCADE)
-
     # nft_image = models.ImageField(upload_to='nftpictures')
+
 
 # class Nft_Bid(models.Model):
 #     nft_bid_id = models.AutoField(primary_key=True)
