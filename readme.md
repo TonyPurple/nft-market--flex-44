@@ -1,4 +1,4 @@
-#NFT Marketplace Application
+# NFT Gallery Application
 
 ##Creators
 
