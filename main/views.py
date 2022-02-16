@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse
@@ -14,6 +14,15 @@ class NFTCreate(LoginRequiredMixin, CreateView):
   fields = ['nft_name', 'token_id', 'blockchain', 'description']
   def get_success_url(self):
         return reverse('detail', kwargs={'nft_id': self.object.id})
+  def form_valid(self, form):
+    form.instance.user = self.request.user  
+    return super().form_valid(form)
+
+class NFTEdit(LoginRequiredMixin, UpdateView):
+  model = NFT
+  fields = ['nft_name', 'description']
+  def get_success_url(self):
+    return reverse('detail', kwargs={'nft_id': self.object.id})
   def form_valid(self, form):
     form.instance.user = self.request.user  
     return super().form_valid(form)
