@@ -29,7 +29,7 @@ class NFTEdit(LoginRequiredMixin, UpdateView):
 
 class NFTDelete(DeleteView):
   model = NFT
-  success_url='/delete/'
+  success_url='/nfts/'
 
 @login_required
 def nft_detail(request, nft_id):
