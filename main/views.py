@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse
@@ -26,6 +26,10 @@ class NFTEdit(LoginRequiredMixin, UpdateView):
   def form_valid(self, form):
     form.instance.user = self.request.user  
     return super().form_valid(form)
+
+class NFTDelete(DeleteView):
+  model = NFT
+  success_url='/delete/'
 
 @login_required
 def nft_detail(request, nft_id):
