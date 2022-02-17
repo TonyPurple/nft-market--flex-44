@@ -7,8 +7,31 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 # Import the mixin for class-based views
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import NFT
-# Create your views here.
+import uuid
+import boto3
+from .models import NFT, Photo
+
+S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
+BUCKET = 'nftmarketgallery'
+
+def add_photo(request, nft_id):
+    # photo-file will be the "name" attribute on the <input type="file">
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # need a unique "key" for S3 / needs image file extension too
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # just in case something goes wrong
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            # build the full url string
+            url = f"{S3_BASE_URL}/{BUCKET}/{key}"
+            photo = Photo(url=url, nft_id=nft_id)
+            photo.save()
+        except:
+            print('An error occurred uploading file to S3')
+        return redirect('detail', nft_id=nft_id)
+
 class NFTCreate(LoginRequiredMixin, CreateView):
   model = NFT
   fields = ['nft_name', 'token_id', 'blockchain', 'description']

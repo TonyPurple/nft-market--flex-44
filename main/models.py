@@ -48,6 +48,12 @@ def __str__(self):
 def get_absolute_url(self):
     return reverse('detail', kwargs={'nft_id': self.id})
 
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for nft_id: {self.nft_id} @{self.url}"
 # class Nft_Bid(models.Model):
 #     nft_bid_id = models.AutoField(primary_key=True)
 #     bidder_account_id = models.ForeignKey(Account, on_delete = models.CASCADE)
