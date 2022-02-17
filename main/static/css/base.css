@@ -51,3 +51,11 @@ nav .brand-logo {
 nav ul a {
     font-size: 1.2rem;
 }
+
+label {
+    font-size: 15px;
+}
+
+input {
+    color: white;
+}
