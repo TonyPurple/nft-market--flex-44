@@ -11,6 +11,7 @@
             </div>
             <h2 class="card-title">{{ nft.nft_name }}</h2>
             <p><small>{{ nft.description }}</small></p>
+            <a href="{% url 'nft_edit' nft.id %}" class="waves-effect waves-light btn-small">Edit</a>
         </div>
     </div>
 </a>
