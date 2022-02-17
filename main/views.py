@@ -34,7 +34,7 @@ def add_photo(request, nft_id):
 
 class NFTCreate(LoginRequiredMixin, CreateView):
   model = NFT
-  fields = ['nft_name', 'token_id', 'blockchain', 'description']
+  fields = ['nft_name', 'blockchain', 'description']
   def get_success_url(self):
         return reverse('detail', kwargs={'nft_id': self.object.id})
   def form_valid(self, form):
