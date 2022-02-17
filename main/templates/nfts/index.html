@@ -7,7 +7,10 @@
     <div class="card">
         <div class="card-content">
             <div class="card-img-container">
-                <!-- would like to have s3 photobucket image render here if possible -->
+                {% for photo in nft.photo_set.all %}
+                <img class="responsive-img card-panel" src="{{photo.url}}"> {% empty %}
+                <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+                {% endfor %}
             </div>
             <h2 class="card-title">{{ nft.nft_name }}</h2>
             <p><small>{{ nft.token_id }}</small></p>
