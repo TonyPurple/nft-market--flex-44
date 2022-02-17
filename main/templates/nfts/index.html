@@ -10,7 +10,7 @@
                 <!-- would like to have s3 photobucket image render here if possible -->
             </div>
             <h2 class="card-title">{{ nft.nft_name }}</h2>
-            <p><small>{{ nft.description }}</small></p>
+            <p><small>{{ nft.token_id }}</small></p>
             <a href="{% url 'nft_edit' nft.id %}" class="waves-effect waves-light btn-small">Edit</a>
         </div>
     </div>
