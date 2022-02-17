@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView
+from .models import NFT, Photo
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse
@@ -9,11 +11,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
-from .models import NFT, Photo
 
 S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
 BUCKET = 'nftmarketgallery'
 
+@login_required
 def add_photo(request, nft_id):
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
@@ -50,9 +52,12 @@ class NFTEdit(LoginRequiredMixin, UpdateView):
     form.instance.user = self.request.user  
     return super().form_valid(form)
 
-class NFTDelete(DeleteView):
+class NFTDelete(LoginRequiredMixin, DeleteView):
   model = NFT
   success_url='/nfts/'
+
+class NFTList(LoginRequiredMixin, ListView):
+  model = NFT
 
 @login_required
 def nft_detail(request, nft_id):

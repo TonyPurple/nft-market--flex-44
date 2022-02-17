@@ -24,6 +24,7 @@
                 <ul class="right">
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'nft_index' %}">My NFT's</a></li>
+                    <li><a href="{% url 'nft_list' %}">All NFT's</a></li>
                     <li><a href="{% url 'nft_create' %}">Add NFT</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
