@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+import random
 
 # class User(models.Model):
 #     user_id = models.AutoField(primary_key=True)
@@ -27,10 +28,12 @@ from django.contrib.auth.models import User
 #     owner = models.ForeignKey(Account, on_delete = models.CASCADE)
 #     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
 class NFT(models.Model):
+    token_id=random.randint(10000, 99999)
     id = models.AutoField(primary_key=True)
     nft_name = models.CharField(max_length=50)
-    token_id = models.IntegerField(max_length=5)
+    token_id = models.IntegerField(max_length=5, default=token_id)
     # supply = models.IntegerField
     blockchain = models.CharField(max_length=10)
     description = models.TextField(blank=True)
@@ -38,7 +41,7 @@ class NFT(models.Model):
     # nft_image = models.ImageField(upload_to='nftpictures')
         # Add the foreign key linking to a user instance
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    
 def __str__(self):
     return self.nft_name
 
