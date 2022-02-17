@@ -30,7 +30,8 @@ h1 {
     background-color: #C5C6C7;
 }
 
-.classone, .classtwo {
+.classone,
+.classtwo {
     display: flex;
     justify-content: space-evenly;
 }
@@ -61,6 +62,12 @@ label {
     font-size: 15px;
 }
 
-input, textarea {
+input,
+textarea {
     color: white;
+}
+
+input,
+file {
+    color: #0B0C10;
 }
