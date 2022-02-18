@@ -48,6 +48,17 @@ def __str__(self):
 def get_absolute_url(self):
     return reverse('detail', kwargs={'nft_id': self.id})
 
+class Bid(models.Model):
+  date = models.DateField('bid date')
+  bidprice = models.CharField(max_length=10)
+  nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"{self.get_bidprice_display()} on {self.date}"
+
+class Meta:
+    ordering = ['-date']
+
 class Photo(models.Model):
     url = models.CharField(max_length=200)
     nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
