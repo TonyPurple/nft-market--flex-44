@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>NFT Details</h1>
+<h1>{{nft.nft_name}}</h1>
 
 <div class="card">
     <div class="card-content">
-        <span class="card-title">{{ nft.nft_name }}</span> {% for photo in nft.photo_set.all %}
+        <span class="card-title"></span> {% for photo in nft.photo_set.all %}
         <img class="responsive-img card-panel" src="{{photo.url}}"> {% empty %}
         <div class="card-panel teal-text center-align">No Photos Uploaded</div>
         {% if notempty %} <br> {% else %}
