@@ -36,7 +36,7 @@
               {% for bid in nft.bid_set.all %}
                 <tr>
                   <td>{{bid.date}}</td>
-                  <td>{{bid.get_bidprice_display}}</td>
+                  <td>{{bid.bidprice}}</td>
                 </tr>
               {% endfor %}
             </tbody>
