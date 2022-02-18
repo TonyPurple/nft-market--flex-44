@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 # Import the mixin for class-based views
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import BidForm
 import uuid
 import boto3
 
@@ -59,10 +60,24 @@ class NFTDelete(LoginRequiredMixin, DeleteView):
 class NFTList(LoginRequiredMixin, ListView):
   model = NFT
 
+def add_bid(request, nft_id):
+  # create a ModelForm instance using the data in request.POST
+  form = BidForm(request.POST)
+  # validate the form
+  if form.is_valid():
+    # don't save the form to the db until it
+    # has the cat_id assigned
+    new_bid = form.save(commit=False)
+    new_bid.nft_id = nft_id
+    new_bid.save()
+  return redirect('detail', nft_id=nft_id)
+
+
 @login_required
 def nft_detail(request, nft_id):
   nft = NFT.objects.get(id=nft_id)
-  return render(request, 'nfts/detail.html', { 'nft': nft })
+  bid_form = BidForm()
+  return render(request, 'nfts/detail.html', { 'nft': nft, 'bid_form':bid_form })
 
 @login_required
 def nft_index(request):
