@@ -23,11 +23,15 @@
         <a href="{% url 'nft_edit' nft.id %}" class="waves-effect waves-light btn-small">Edit</a>
         <a href="{% url 'nft_delete' nft.id %}" class="waves-effect waves-light btn-small">Delete</a> {% endif %}
         <div class="col s6">
+          {% if nft.user == request.user %}
+          <div></div>
+          {%else%}
           <form action="{% url 'add_bid' nft.id %}" method="post">
             {% csrf_token %}
             {{ bid_form.as_p }}
             <input type="submit" class="btn" value="Add Bid">
           </form>
+          {% endif %}
           <table class="striped">
             <thead>
               <tr><th>Date</th><th>Bid</th></tr>
