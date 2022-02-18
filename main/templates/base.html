@@ -23,13 +23,13 @@
                 </ul>
                 <ul class="right">
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'nft_index' %}">My NFT's</a></li>
-                    <li><a href="{% url 'nft_list' %}">All NFT's</a></li>
-                    <li><a href="{% url 'nft_create' %}">Add NFT</a></li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a href="{% url 'nft_list' %}">ALL NFT'S</a></li>
+                    <li><a href="{% url 'nft_index' %}">MY NFT'S</a></li>
+                    <li><a href="{% url 'nft_create' %}">ADD NFT</a></li>
+                    <li><a href="{% url 'logout' %}">LOG OUT</a></li>
                     {% else %}
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    <li><a href="{% url 'signup' %}">SIGN UP</a></li>
+                    <li><a href="{% url 'login' %}">LOG IN</a></li>
                     {% endif %}
                 </ul>
             </div>
