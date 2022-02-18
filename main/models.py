@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 import random
+import datetime
 
 # class User(models.Model):
 #     user_id = models.AutoField(primary_key=True)
@@ -49,7 +50,7 @@ def get_absolute_url(self):
     return reverse('detail', kwargs={'nft_id': self.id})
 
 class Bid(models.Model):
-  date = models.DateField('bid date')
+  date = models.DateField(("Date"), default=datetime.date.today)
   bidprice = models.CharField(max_length=10)
   nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
 
