@@ -101,3 +101,11 @@ def signup(request):
 
 def home(request):
   return render(request, 'home.html')
+
+def search_result(request):
+  if request.method == "GET":
+    searched = request.GET['searched']
+    search_result = NFT.objects.filter(nft_name__contains=searched)
+    return render(request, 'main/nft_search_result.html', {'searched': searched, 'search_result':search_result})
+  else:
+    return render(request, 'main/nft_search_result.html')

@@ -36,7 +36,7 @@ h1 {
     justify-content: space-evenly;
 }
 
-.bidcard{
+.bidcard {
     display: flex;
     justify-content: space-evenly;
 }
@@ -47,7 +47,7 @@ h1 {
 
 nav .nav-wrapper {
     background-color: #0B0C10;
-    height: 120%;
+    height: 100%;
 }
 
 .page-footer {
@@ -70,4 +70,13 @@ label {
 input,
 textarea {
     color: white;
+}
+
+li form {
+    display: flex;
+    margin-right: 25px;
+}
+
+#search {
+    width: 120px;
 }
