@@ -5,7 +5,20 @@
         <h1>You searched for {{ searched }}</h1>
         <br/>
         {% for nft in search_result %}
-            <a href="{% url 'detail' nft.id %}">{{ nft.nft_name }}</a><br/>
+            <a href="{% url 'detail' nft.id %}">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-img-container">
+                            {% for photo in nft.photo_set.all %}
+                                <img class="responsive-img card-panel" src="{{photo.url}}"> {% empty %}
+                                <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+                            {% endfor %}
+                        </div>
+                        <h2 class="card-title">{{ nft.nft_name }}</h2>
+                        <p><small>{{ nft.token_id }}</small></p>
+                    </div>
+                </div>
+            </a><br/>
         {% endfor %}
     {% else %}
         <h1>Hey! You forgot to enter a NFT name in the search box.</h1>
