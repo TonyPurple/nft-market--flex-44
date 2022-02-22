@@ -51,7 +51,7 @@ def get_absolute_url(self):
 
 class Bid(models.Model):
   date = models.DateField(("Date"), default=datetime.date.today)
-  bidprice = models.CharField(max_length=10)
+  bidprice = models.DecimalField(max_digits=8, decimal_places=3)
   nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
 
   def __str__(self):
