@@ -45,7 +45,12 @@
                     </tr>
                     {% empty %}
                   {% if nft.user == request.user %}
-                    <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-small">Sell</a> 
+                  <div class="sellbutton">
+                  <h3>READY TO SELL YOUR NFT?</h3>
+                  <br>
+                  
+                    <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-large">Sell</a> 
+                  </div>
                   {% endif %}
                 {% endfor %}
                 </tbody>
