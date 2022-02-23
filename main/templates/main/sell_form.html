@@ -8,5 +8,14 @@
     </table>
     <input type="submit" value="Submit!" class="btn">
   </form>
-
+<!-- Date Pickter -->
+  <script>
+    var dateEl = document.getElementById('id_sale_ends');
+    M.Datepicker.init(dateEl, {
+      format: 'yyyy-mm-dd',
+      defaultDate: new Date(),
+      setDefaultDate: true,
+      autoClose: true
+    });
+  </script>
 {% endblock %}
