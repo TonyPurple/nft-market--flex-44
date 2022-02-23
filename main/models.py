@@ -29,12 +29,13 @@ import datetime
 #     owner = models.ForeignKey(Account, on_delete = models.CASCADE)
 #     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-
+def random_token():
+    return int(random.randint(10000, 99999))
+    
 class NFT(models.Model):
-    token_id=random.randint(10000, 99999)
     id = models.AutoField(primary_key=True)
-    nft_name = models.CharField(max_length=50)
-    token_id = models.IntegerField(max_length=5, default=token_id)
+    nft_name = models.CharField(("NFT Name"),max_length=50)
+    token_id = models.IntegerField(default=random_token)
     # supply = models.IntegerField
     blockchain = models.CharField(max_length=10)
     description = models.TextField(blank=True)
@@ -42,16 +43,16 @@ class NFT(models.Model):
     # nft_image = models.ImageField(upload_to='nftpictures')
         # Add the foreign key linking to a user instance
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    
-def __str__(self):
-    return self.nft_name
 
-def get_absolute_url(self):
-    return reverse('detail', kwargs={'nft_id': self.id})
+    def __str__(self):
+        return self.nft_name
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'nft_id': self.id})
 
 class Bid(models.Model):
   date = models.DateField(("Date"), default=datetime.date.today)
-  bidprice = models.DecimalField(max_digits=8, decimal_places=3)
+  bidprice = models.DecimalField(("Bid Price"),max_digits=8, decimal_places=3)
   nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
 
   def __str__(self):
@@ -61,8 +62,8 @@ class Meta:
     ordering = ['-date']
 
 class Sell(models.Model):
-  sale_ends = models.DateField(("Date"), default=datetime.date.today)
-  minbidprice = models.DecimalField(max_digits=8, decimal_places=3)
+  sale_ends = models.DateField(("Date Sale Ends"))
+  minbidprice = models.DecimalField(("Minimum Bid Price"),max_digits=8, decimal_places=3)
   nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
 
 class Photo(models.Model):
