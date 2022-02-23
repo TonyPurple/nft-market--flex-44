@@ -74,8 +74,7 @@ def add_bid(request, nft_id):
 def nft_detail(request, nft_id):
   nft = NFT.objects.get(id=nft_id)
   bid_form = BidForm()
-  sell_form = SellForm()
-  return render(request, 'nfts/detail.html', { 'nft': nft, 'bid_form':bid_form,'sell_form':sell_form })
+  return render(request, 'nfts/detail.html', { 'nft': nft, 'bid_form':bid_form})
 
 @login_required
 def nft_index(request):

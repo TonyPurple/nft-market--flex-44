@@ -28,6 +28,7 @@
     <div class="card">
         <div class="card-content">
             <table class="striped">
+              {% for sell in nft.sell_set.all %}
                 <thead>
                     <tr>
                         <th>Sale Ends</th>
@@ -35,7 +36,7 @@
                         <th>USD</th>
                     </tr>
                 </thead>
-                {% for sell in nft.sell_set.all %}
+                
                 <tbody>
                     <tr>
                         <td>{{sell.sale_ends}}</td>
@@ -43,12 +44,26 @@
                         <td>${{sell.minbidprice|mul:2735}}</td>
                     </tr>
                     {% empty %}
-                    <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-small">Sell</a> {% endfor %}
+                  {% if nft.user == request.user %}
+                  <div class="sellbutton">
+                  <h3>READY TO SELL YOUR NFT?</h3>
+                  <br>
+                  
+                    <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-large">Sell</a> 
+                  </div>
+                  {% endif %}
+                {% endfor %}
                 </tbody>
             </table>
-            <span class="card-title"></span> {% for bid in nft.bid_set.all %} {% if forloop.last %}
+
+        {% for sell in nft.sell_set.all %}
+            <span class="card-title"></span> 
+            {% for bid in nft.bid_set.all %} 
+              {% if forloop.last %}
             <h4>Top Bid: {{ bid.bidprice }}</h4>
-            {% endif %} {% endfor %} {% if nft.user == request.user %}
+              {% endif %} 
+            {% endfor %} 
+            {% if nft.user == request.user %}
             <div></div>
             {%else%}
             <form action="{% url 'add_bid' nft.id %}" method="post">
@@ -56,6 +71,7 @@
                 <input type="submit" class="btn" value="Add Bid">
             </form>
             {% endif %}
+           
             <table class="striped">
                 <thead>
                     <tr>
@@ -74,6 +90,7 @@
                     {% endfor %}
                 </tbody>
             </table>
+            {% endfor %} 
         </div>
     </div>
 </div>
