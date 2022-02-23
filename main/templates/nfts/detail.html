@@ -28,18 +28,18 @@
 
   <div class="card">
     <div class="card-content">
-
       <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-small">Sell</a>
       <table class="striped">
         <thead>
           <tr><th>Sale Ends</th><th>Minimum Bid Price</th></tr>
         </thead>
         <tbody>
-          
+          {% for sell in nft.sell_set.all %}
             <tr>
-              <td>{{nft.sell.sale_ends}}</td>
-              <td>{{nft.sell.minbidprice}}</td>
+              <td>{{sell.sale_ends}}</td>
+              <td>{{sell.minbidprice}}</td>
             </tr>
+            {% endfor %}
           </tbody>
         </table>         
 

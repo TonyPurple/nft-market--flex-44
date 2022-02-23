@@ -127,5 +127,6 @@ def sell(request, nft_id):
     new_sell = form.save(commit=False)
     new_sell.nft_id = nft_id
     new_sell.save()
+    return redirect('detail', nft_id=nft_id)
   return render(request, 'main/sell_form.html', { 'nft': nft_id,'form':form})
   
