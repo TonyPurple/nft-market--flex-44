@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
 
+<h6 id="welcome">Welcome {{ user }}</h6> {% endif %}
 <h1>DISCOVER EXTRAORDINARY NFT'S</h1>
 <h2>An NFT Gallery application created by a team of 4 General Assembly students</h2>
 
