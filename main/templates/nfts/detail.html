@@ -28,6 +28,7 @@
     <div class="card">
         <div class="card-content">
             <table class="striped">
+              {% for sell in nft.sell_set.all %}
                 <thead>
                     <tr>
                         <th>Sale Ends</th>
@@ -35,7 +36,7 @@
                         <th>USD</th>
                     </tr>
                 </thead>
-                {% for sell in nft.sell_set.all %}
+                
                 <tbody>
                     <tr>
                         <td>{{sell.sale_ends}}</td>
@@ -43,7 +44,10 @@
                         <td>${{sell.minbidprice|mul:2735}}</td>
                     </tr>
                     {% empty %}
-                    <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-small">Sell</a> {% endfor %}
+                    {% if nft.user == request.user %}
+                    <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-small">Sell</a> 
+                    {% endif %}
+                    {% endfor %}
                 </tbody>
             </table>
             <span class="card-title"></span> {% for bid in nft.bid_set.all %} {% if forloop.last %}
