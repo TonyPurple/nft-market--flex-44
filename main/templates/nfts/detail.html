@@ -44,15 +44,21 @@
                         <td>${{sell.minbidprice|mul:2735}}</td>
                     </tr>
                     {% empty %}
-                    {% if nft.user == request.user %}
+                  {% if nft.user == request.user %}
                     <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-small">Sell</a> 
-                    {% endif %}
-                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
                 </tbody>
             </table>
-            <span class="card-title"></span> {% for bid in nft.bid_set.all %} {% if forloop.last %}
+
+        {% for sell in nft.sell_set.all %}
+            <span class="card-title"></span> 
+            {% for bid in nft.bid_set.all %} 
+              {% if forloop.last %}
             <h4>Top Bid: {{ bid.bidprice }}</h4>
-            {% endif %} {% endfor %} {% if nft.user == request.user %}
+              {% endif %} 
+            {% endfor %} 
+            {% if nft.user == request.user %}
             <div></div>
             {%else%}
             <form action="{% url 'add_bid' nft.id %}" method="post">
@@ -60,6 +66,7 @@
                 <input type="submit" class="btn" value="Add Bid">
             </form>
             {% endif %}
+           
             <table class="striped">
                 <thead>
                     <tr>
@@ -78,6 +85,7 @@
                     {% endfor %}
                 </tbody>
             </table>
+            {% endfor %} 
         </div>
     </div>
 </div>
