@@ -9,4 +9,4 @@ class BidForm(ModelForm):
 class SellForm(ModelForm):
   class Meta:
     model = Sell
-    fields = ['minbidprice']
+    fields = ['sale_ends','minbidprice']

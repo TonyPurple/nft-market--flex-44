@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 # Import the mixin for class-based views
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import BidForm
+from .forms import BidForm, SellForm
 import uuid
 import boto3
 
@@ -49,14 +49,14 @@ class NFTCreate(LoginRequiredMixin, CreateView):
 
 
 
-class SellCreate(LoginRequiredMixin, CreateView):
-  model = Sell
-  fields = ['minbidprice']
-  def get_success_url(self):
-        return reverse('detail', kwargs={'nft_id': self.object.id})
-  def form_valid(self, form):
-    form.instance.user = self.request.user  
-    return super().form_valid(form)
+# class SellCreate(LoginRequiredMixin, CreateView):
+#   model = Sell
+#   fields = ['minbidprice','sale_ends']
+#   def get_success_url(self):
+#         return reverse('detail', kwargs={'nft_id': self.object.id})
+#   def form_valid(self, form):
+#     form.instance.user = self.request.user  
+#     return super().form_valid(form)
 
 class NFTEdit(LoginRequiredMixin, UpdateView):
   model = NFT
@@ -87,7 +87,8 @@ def add_bid(request, nft_id):
 def nft_detail(request, nft_id):
   nft = NFT.objects.get(id=nft_id)
   bid_form = BidForm()
-  return render(request, 'nfts/detail.html', { 'nft': nft, 'bid_form':bid_form })
+  sell_form = SellForm()
+  return render(request, 'nfts/detail.html', { 'nft': nft, 'bid_form':bid_form,'sell_form':sell_form })
 
 @login_required
 def nft_index(request):
@@ -120,11 +121,11 @@ def search_result(request):
   else:
     return render(request, 'main/nft_search_result.html')
 
-# def sell(request, nft_id):
-#   form = SellForm(request.POST)
-#   if form.is_valid():
-#     new_sell = form.save(commit=False)
-#     new_sell.nft_id = nft_id
-#     new_sell.save()
-#   return redirect('detail', nft_id=nft_id)
+def sell(request, nft_id):
+  form = SellForm(request.POST)
+  if form.is_valid():
+    new_sell = form.save(commit=False)
+    new_sell.nft_id = nft_id
+    new_sell.save()
+  return render(request, 'main/sell_form.html', { 'nft': nft_id,'form':form})
   
