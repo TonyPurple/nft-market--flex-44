@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
 
+<h6 id="welcome">Welcome {{ user }}</h6> {% endif %}
 <h1>DISCOVER EXTRAORDINARY NFT'S</h1>
 <h2>An NFT Gallery application created by a team of 4 General Assembly students</h2>
 
@@ -7,9 +8,6 @@
     <a href="https://www.linkedin.com/in/marianne-salamanca-badilla/" target='blank'>
         <div class="card">
             <div class="card-content">
-                <div class="card-img-container">
-                    <img class="responsive-img card-panel" src="">
-                </div>
                 <h2 class="card-title">Marianne Salamanca-Badilla</h2>
                 <p><small>SEI-44</small></p>
             </div>
@@ -18,9 +16,6 @@
     <a href="">
         <div class="card">
             <div class="card-content">
-                <div class="card-img-container">
-                    <img class="responsive-img card-panel" src="">
-                </div>
                 <h2 class="card-title">Tatsiana</h2>
                 <p><small>SEI-44</small></p>
             </div>
@@ -32,9 +27,6 @@
     <a href="">
         <div class="card">
             <div class="card-content">
-                <div class="card-img-container">
-                    <img class="responsive-img card-panel" src="">
-                </div>
                 <h2 class="card-title">Tiffany</h2>
                 <p><small>SEI-44</small></p>
             </div>
@@ -43,9 +35,6 @@
     <a href="https://www.linkedin.com/in/anthony-vanoni/" target='blank'>
         <div class="card">
             <div class="card-content">
-                <div class="card-img-container">
-                    <img class="responsive-img card-panel" src="">
-                </div>
                 <h2 class="card-title">Anthony</h2>
                 <p><small>SEI-44</small></p>
             </div>

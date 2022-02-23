@@ -37,7 +37,7 @@ def add_photo(request, nft_id):
 
 class NFTCreate(LoginRequiredMixin, CreateView):
   model = NFT
-  fields = ['nft_name', 'blockchain', 'description']
+  fields = ['nft_name','description']
   def get_success_url(self):
         return reverse('detail', kwargs={'nft_id': self.object.id})
   def form_valid(self, form):
@@ -57,7 +57,7 @@ class NFTDelete(LoginRequiredMixin, DeleteView):
   model = NFT
   success_url='/nfts/'
 
-class NFTList(LoginRequiredMixin, ListView):
+class NFTList(ListView):
   model = NFT
 
 def add_bid(request, nft_id):
@@ -101,3 +101,11 @@ def signup(request):
 
 def home(request):
   return render(request, 'home.html')
+
+def search_result(request):
+  if request.method == "GET":
+    searched = request.GET['searched']
+    search_result = NFT.objects.filter(nft_name__contains=searched)
+    return render(request, 'main/nft_search_result.html', {'searched': searched, 'search_result':search_result})
+  else:
+    return render(request, 'main/nft_search_result.html')
