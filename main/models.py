@@ -60,6 +60,11 @@ class Bid(models.Model):
 class Meta:
     ordering = ['-date']
 
+class Sell(models.Model):
+  sale_ends = models.DateField(("Date"), default=datetime.date.today)
+  minbidprice = models.DecimalField(max_digits=8, decimal_places=3)
+  nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
+
 class Photo(models.Model):
     url = models.CharField(max_length=200)
     nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
