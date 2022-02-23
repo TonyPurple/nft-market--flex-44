@@ -60,6 +60,7 @@ class NFTDelete(LoginRequiredMixin, DeleteView):
 class NFTList(ListView):
   model = NFT
 
+@login_required
 def add_bid(request, nft_id):
   form = BidForm(request.POST)
   if form.is_valid():
@@ -107,6 +108,7 @@ def search_result(request):
   else:
     return render(request, 'main/nft_search_result.html')
 
+@login_required
 def sell(request, nft_id):
   form = SellForm(request.POST)
   if form.is_valid():
