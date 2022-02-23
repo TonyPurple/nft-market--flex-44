@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if searched %}
-        <h1>You searched for {{ searched }}</h1>
+        <h1>You searched for '{{ searched }}'</h1>
         <br/>
         {% for nft in search_result %}
             <a href="{% url 'detail' nft.id %}">
