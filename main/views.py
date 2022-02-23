@@ -57,7 +57,7 @@ class NFTDelete(LoginRequiredMixin, DeleteView):
   model = NFT
   success_url='/nfts/'
 
-class NFTList(LoginRequiredMixin, ListView):
+class NFTList(ListView):
   model = NFT
 
 def add_bid(request, nft_id):
