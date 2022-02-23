@@ -28,7 +28,6 @@
 
   <div class="card">
     <div class="card-content">
-
       <table class="striped">
         <thead>
           <tr><th>Sale Ends</th><th>Min Bid Price</th><th>USD</th></tr>
@@ -44,8 +43,7 @@
           <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-small">Sell</a>
             {% endfor %}
           </tbody>
-        </table>         
-
+        </table>       
       <span class="card-title"></span> 
       {% for bid in nft.bid_set.all %}
         {% if forloop.last %}

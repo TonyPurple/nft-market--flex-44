@@ -43,20 +43,6 @@ class NFTCreate(LoginRequiredMixin, CreateView):
   def form_valid(self, form):
     form.instance.user = self.request.user  
     return super().form_valid(form)
-    
-
-
-
-
-
-# class SellCreate(LoginRequiredMixin, CreateView):
-#   model = Sell
-#   fields = ['minbidprice','sale_ends']
-#   def get_success_url(self):
-#         return reverse('detail', kwargs={'nft_id': self.object.id})
-#   def form_valid(self, form):
-#     form.instance.user = self.request.user  
-#     return super().form_valid(form)
 
 class NFTEdit(LoginRequiredMixin, UpdateView):
   model = NFT
