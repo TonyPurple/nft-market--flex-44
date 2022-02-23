@@ -36,7 +36,6 @@
                         <th>USD</th>
                     </tr>
                 </thead>
-                
                 <tbody>
                     <tr>
                         <td>{{sell.sale_ends}}</td>
@@ -48,10 +47,10 @@
                   <div class="sellbutton">
                   <h3>READY TO SELL YOUR NFT?</h3>
                   <br>
-                  
                     <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-large">Sell</a> 
                   </div>
                   {% endif %}
+                  <h3>SORRY! THIS NFT IS NOT FOR SALE ~_~</h3>
                 {% endfor %}
                 </tbody>
             </table>
