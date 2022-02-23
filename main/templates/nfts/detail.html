@@ -31,13 +31,14 @@
 
       <table class="striped">
         <thead>
-          <tr><th>Sale Ends</th><th>Minimum Bid Price</th></tr>
+          <tr><th>Sale Ends</th><th>Min Bid Price</th><th>USD</th></tr>
         </thead>
         {% for sell in nft.sell_set.all %}
         <tbody>
           <tr>
             <td>{{sell.sale_ends}}</td>
             <td>{{sell.minbidprice}}</td>
+            <td>${{sell.minbidprice|mul:2735}}</td>
           </tr>
           {% empty %}
           <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-small">Sell</a>
