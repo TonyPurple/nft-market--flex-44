@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
-from .models import NFT, Photo
+from .models import NFT, Photo, Sell
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse
@@ -43,6 +43,20 @@ class NFTCreate(LoginRequiredMixin, CreateView):
   def form_valid(self, form):
     form.instance.user = self.request.user  
     return super().form_valid(form)
+    
+
+
+
+
+
+class SellCreate(LoginRequiredMixin, CreateView):
+  model = Sell
+  fields = ['minbidprice']
+  def get_success_url(self):
+        return reverse('detail', kwargs={'nft_id': self.object.id})
+  def form_valid(self, form):
+    form.instance.user = self.request.user  
+    return super().form_valid(form)
 
 class NFTEdit(LoginRequiredMixin, UpdateView):
   model = NFT
@@ -61,12 +75,8 @@ class NFTList(LoginRequiredMixin, ListView):
   model = NFT
 
 def add_bid(request, nft_id):
-  # create a ModelForm instance using the data in request.POST
   form = BidForm(request.POST)
-  # validate the form
   if form.is_valid():
-    # don't save the form to the db until it
-    # has the cat_id assigned
     new_bid = form.save(commit=False)
     new_bid.nft_id = nft_id
     new_bid.save()
@@ -109,3 +119,12 @@ def search_result(request):
     return render(request, 'main/nft_search_result.html', {'searched': searched, 'search_result':search_result})
   else:
     return render(request, 'main/nft_search_result.html')
+
+# def sell(request, nft_id):
+#   form = SellForm(request.POST)
+#   if form.is_valid():
+#     new_sell = form.save(commit=False)
+#     new_sell.nft_id = nft_id
+#     new_sell.save()
+#   return redirect('detail', nft_id=nft_id)
+  

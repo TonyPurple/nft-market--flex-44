@@ -28,6 +28,9 @@
 
   <div class="card">
     <div class="card-content">
+
+      <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-small">Sell</a>
+      
       <span class="card-title"></span> 
       {% for bid in nft.bid_set.all %}
         {% if forloop.last %}
