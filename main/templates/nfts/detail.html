@@ -16,7 +16,7 @@
             </form>
             {% endif %} {% endfor %}
             <p>Creator: {{ nft.user }}</p>
-            <p>Blockchain: Etheruem</p>
+            <p>Blockchain: Ethereum</p>
             <p>Token ID: {{ nft.token_id }}</p>
             <p>Description: {{ nft.description }}</p>
             <form action="{% url 'like_nft' nft.pk %}" method="POST">
