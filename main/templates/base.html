@@ -22,11 +22,11 @@
                     <li><a href="/" class="left brand-logo">&nbsp;&nbsp;NFT Gallery</a></li>
                 </ul>
                 <ul class="right">
-                    <li><a href="{% url 'nft_list' %}">ALL NFT'S</a></li>
+                    <li><a href="{% url 'nft_list' %}">EXPLORE</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'for_sale' %}">NFT'S FOR SALE</a></li>
                     <li><a href="{% url 'nft_index' %}">{{user |upper}}'S NFT'S</a></li>
-                    <li><a href="{% url 'nft_create' %}">ADD NFT</a></li>
+                    <li><a href="{% url 'nft_create' %}">CREATE</a></li>
                     <li><a href="{% url 'logout' %}">LOG OUT</a></li>
                     {% else %}
                     <li><a href="{% url 'signup' %}">SIGN UP</a></li>
@@ -53,6 +53,13 @@
     <footer class="page-footer">
         <div class="right">All Rights Reserved, &copy; 2022 NFT Marketplace &nbsp;</div>
     </footer>
+    <script>
+
+        $(document).ready(function(){
+            $('.collapsible').collapsible();
+          });
+        
+        </script>
 </body>
 
 </html>
