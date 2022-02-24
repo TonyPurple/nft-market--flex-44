@@ -49,8 +49,9 @@
                   <br>
                     <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-large">Sell</a> 
                   </div>
+                  {%else%}
+                    <h3>SORRY! THIS NFT IS NOT FOR SALE ~_~</h3>
                   {% endif %}
-                  <h3>SORRY! THIS NFT IS NOT FOR SALE ~_~</h3>
                 {% endfor %}
                 </tbody>
             </table>
