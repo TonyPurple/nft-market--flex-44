@@ -57,9 +57,9 @@ class Bid(models.Model):
 
   def __str__(self):
     return f"{self.get_bidprice_display()} on {self.date}"
-
-class Meta:
-    ordering = ['-date']
+    
+  class Meta:
+    ordering = ('-bidprice',)
 
 class Sell(models.Model):
   sale_ends = models.DateField(("Date Sale Ends"))
