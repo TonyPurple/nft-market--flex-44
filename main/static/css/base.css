@@ -81,6 +81,10 @@ li form {
     width: 120px;
 }
 
+#searchbar {
+    margin: 0 0 0 45px;
+}
+
 #welcome {
     color: #C5C6C7;
 }

@@ -22,12 +22,6 @@
                     <li><a href="/" class="left brand-logo">&nbsp;&nbsp;NFT Gallery</a></li>
                 </ul>
                 <ul class="right">
-                    <li>
-                        <form action="{% url 'search_result' %}" method="get">
-                            <input type="search" placeholder="Search NFTs" name='searched'>
-                            <button id="search" class="waves-effect waves-light btn-small" type="submit">Search</button>
-                        </form>
-                    </li>
                     <li><a href="{% url 'nft_list' %}">ALL NFT'S</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'for_sale' %}">NFT'S FOR SALE</a></li>
@@ -42,6 +36,17 @@
             </div>
         </nav>
     </header>
+
+    <div class="container-fixed">
+        <ul class="left">
+            <li class="search">
+                <form action="{% url 'search_result' %}" method="get">
+                    <input id = searchbar type="search" placeholder="Search NFTs" name='searched'>
+                    <button id="search" class="waves-effect waves-light btn-small" type="submit">Search</button>
+                </form>
+            </li>
+    </div>
+
     <main class="container">
         {% block content %} {% endblock %}
     </main>
