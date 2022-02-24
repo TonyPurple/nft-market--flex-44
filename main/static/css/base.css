@@ -91,6 +91,10 @@ li form {
     outline:none;
 }
 
+.nonft{
+    color:white;
+}
+
 #searchbar {
     margin: 0 0 0 45px;
 }
