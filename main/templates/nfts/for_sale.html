@@ -2,7 +2,9 @@
 
 <h1>NFT'S FOR SALE</h1>
 
-{% for nft in nfts %}
+
+{% for nft in nft %}
+{% for sell in nft.sell_set.all %}
 <a href="{% url 'detail' nft.id %}">
     <div class="card">
         <div class="card-content">
@@ -21,4 +23,4 @@
         </div>
     </div>
 </a>
-{% endfor %} {% endblock %}
+{% endfor %}{% endfor %} {% endblock %}
