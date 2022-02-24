@@ -33,7 +33,7 @@
         <div class="card-content">
             <table class="striped">
               {% for bid in nft.bid_set.all %} 
-              {% if forloop.last %}
+              {% if forloop.first %}
             <h4>Top Bid: {{ bid.bidprice }}</h4>
               {% endif %} 
             {% endfor %} 
