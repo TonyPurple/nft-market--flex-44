@@ -15,8 +15,12 @@ footer.page-footer {
     text-align: right;
 }
 
+nav.nav-extended{
+    background-color: #45A29E;
+}
+
 h1 {
-    color: #66FCF1
+    color: #66FCF1;
 }
 
 .card-title {
@@ -68,7 +72,7 @@ label {
 }
 
 nav a:hover{
-    color: #66FCF1;
+    color: #fcba03;
 }
 
 input,
@@ -82,11 +86,17 @@ li form {
 }
 
 #search {
-    width: 120px;
+    border:none;
+    background-color:transparent;
+    outline:none;
 }
 
 #searchbar {
     margin: 0 0 0 45px;
+}
+
+#searchbar::placeholder {
+    color: white;
 }
 
 #welcome {
