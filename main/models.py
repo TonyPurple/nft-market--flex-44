@@ -57,7 +57,7 @@ class NFT(models.Model):
 
 class Bid(models.Model):
   date = models.DateField(("Date"), default=datetime.date.today)
-  bidprice = models.DecimalField(("Bid Price"),max_digits=8, decimal_places=3)
+  bidprice = models.FloatField(("Bid Price"))
   nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
 
   def __str__(self):
@@ -68,7 +68,7 @@ class Bid(models.Model):
 
 class Sell(models.Model):
   sale_ends = models.DateField(("Date Sale Ends"))
-  minbidprice = models.DecimalField(("Minimum Bid Price"),max_digits=8, decimal_places=3)
+  minbidprice = models.FloatField(("Minimum Bid Price"))
   nft = models.ForeignKey(NFT, on_delete=models.CASCADE)
 
 class Photo(models.Model):

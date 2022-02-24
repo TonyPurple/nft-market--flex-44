@@ -91,6 +91,10 @@ li form {
     outline:none;
 }
 
+label {
+    color: white;
+}
+
 .nonft{
     color:white;
 }
