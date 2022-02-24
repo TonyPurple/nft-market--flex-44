@@ -31,6 +31,15 @@
 
     <div class="card">
         <div class="card-content">
+          
+          {% for bid in nft.bid_set.all %} 
+          {% for sell in nft.sell_set.all %} 
+          {% if sell.sale_ends == bid.date %}
+          <h3 class = "teal-text center-align">BID ENDED ON {{sell.sale_ends}}</h3>
+          {% endif %} 
+          {% endfor %} 
+          {% endfor %} 
+          
             <table class="striped">
               {% for bid in nft.bid_set.all %} 
               {% if forloop.first %}
@@ -54,12 +63,14 @@
                     {% empty %}
                   {% if nft.user == request.user %}
                   <div class="sellbutton">
-                  <h3>READY TO SELL YOUR NFT?</h3>
-                  <br>
-                    <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-large">Sell</a> 
+                  <h3 class = "center-align">READY TO SELL YOUR NFT?</h3>
+                  <br>   
+                  <div class = "center-align">
+                    <a href="{% url 'sell' nft.id %}" class="waves-effect waves-light btn-large">Sell</a>                 
                   </div>
+                </div>         
                   {%else%}
-                    <h3>SORRY! THIS NFT IS NOT FOR SALE ~_~</h3>
+                    <h3 class = "center-align">SORRY! THIS NFT IS NOT FOR SALE ~_~</h3>
                   {% endif %}
                 {% endfor %}
                 </tbody>
