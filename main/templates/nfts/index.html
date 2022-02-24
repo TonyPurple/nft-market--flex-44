@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>NFT'S FOR SALE</h1>
+<h1>{{user | upper}}'S NFT'S</h1>
 
 {% for nft in nfts %}
 <a href="{% url 'detail' nft.id %}">
