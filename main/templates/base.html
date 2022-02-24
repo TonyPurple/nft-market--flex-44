@@ -30,6 +30,7 @@
                     </li>
                     <li><a href="{% url 'nft_list' %}">ALL NFT'S</a></li>
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'for_sale' %}">NFT'S FOR SALE</a></li>
                     <li><a href="{% url 'nft_index' %}">{{user |upper}}'S NFT'S</a></li>
                     <li><a href="{% url 'nft_create' %}">ADD NFT</a></li>
                     <li><a href="{% url 'logout' %}">LOG OUT</a></li>

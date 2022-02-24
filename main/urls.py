@@ -14,4 +14,5 @@ urlpatterns = [
   path('nfts/<int:nft_id>/add_bid/', views.add_bid, name='add_bid'),
   path('nfts/search_result/', views.search_result, name='search_result'),
   path('nfts/<int:nft_id>/add_sell/', views.sell, name='sell'),
+  path('nfts/for_sale', views.all_for_sale, name='for_sale'),
 ]
