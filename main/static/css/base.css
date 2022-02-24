@@ -67,6 +67,10 @@ label {
     font-size: 15px;
 }
 
+nav a:hover{
+    color: #66FCF1;
+}
+
 input,
 textarea {
     color: #fcba03;
