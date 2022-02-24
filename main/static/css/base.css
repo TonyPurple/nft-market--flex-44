@@ -88,3 +88,12 @@ li form {
 p #id_bidprice {
     color: black;
 }
+
+.header-text {
+    color: #c5dbd9;
+}
+
+.errorlist li {
+    color: #79bedb;
+}
+

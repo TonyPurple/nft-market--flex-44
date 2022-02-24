@@ -116,4 +116,8 @@ def sell(request, nft_id):
     new_sell.save()
     return redirect('detail', nft_id=nft_id)
   return render(request, 'main/sell_form.html', { 'nft': nft_id,'form':form})
+
+def all_for_sale(request):
+  nft = NFT.objects.all()
+  return render(request, 'nfts/for_sale.html',{ 'nft': nft }) 
   
