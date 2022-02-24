@@ -43,6 +43,11 @@ class NFT(models.Model):
     # nft_image = models.ImageField(upload_to='nftpictures')
         # Add the foreign key linking to a user instance
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #object with no likes and is optional
+    likes = models.ManyToManyField(User, related_name='likes')
+
+    def total_likes(self):
+        return self.likes.count()
 
     def __str__(self):
         return self.nft_name

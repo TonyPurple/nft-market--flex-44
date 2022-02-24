@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 from .models import NFT, Photo, Sell
@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 # Import the mixin for class-based views
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from .forms import BidForm, SellForm
 import uuid
 import boto3
@@ -75,6 +76,19 @@ def nft_detail(request, nft_id):
   nft = NFT.objects.get(id=nft_id)
   bid_form = BidForm()
   return render(request, 'nfts/detail.html', { 'nft': nft, 'bid_form':bid_form})
+  template_name = 'detail.html'
+
+def get_context_data(self, *args, **kwargs):
+    stuff = get_object_or_404(NFT, id=self.kwargs['pk'])
+    total_likes = stuff.total_likes()
+    context["total_likes"] = total_likes
+    return context
+
+def likeview(request, pk):
+
+  nft = get_object_or_404(NFT, pk=pk)
+  nft.likes.add(request.user)
+  return HttpResponseRedirect(reverse('detail', args=[str(pk)]))
 
 @login_required
 def nft_index(request):
