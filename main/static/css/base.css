@@ -85,6 +85,10 @@ li form {
     color: #C5C6C7;
 }
 
+p #id_bidprice {
+    color: black;
+}
+
 .header-text {
     color: #c5dbd9;
 }
