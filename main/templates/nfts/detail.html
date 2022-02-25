@@ -15,7 +15,7 @@
                 <input type="submit" class="btn" value="Upload Photo">
             </form>
             {% endif %} {% endfor %}
-            <form action="{% url 'like_nft' nft.pk %}" method="POST" align="right">
+            <form action="{% url 'like_nft' nft.pk %}" method="POST" class="right">
                 {% csrf_token %}
                 <button type="submit", name = "nft_id", value="{{ post.id}}" class="waves-effect waves-light btn-small"> Like <i class="tiny material-icons">favorite</i> </button>
                 <br>
@@ -34,14 +34,7 @@
     <div class="card">
         <div class="card-content">
           
-          {% for bid in nft.bid_set.all %} 
-          {% for sell in nft.sell_set.all %} 
-          {% if sell.sale_ends == bid.date %}
-          <h3 class = "teal-text center-align">BID ENDED ON {{sell.sale_ends}}</h3>
-          {% endif %} 
-          {% endfor %} 
-          {% endfor %} 
-          
+
             <table class="striped">
               {% for bid in nft.bid_set.all %} 
               {% if forloop.first %}
