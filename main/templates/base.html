@@ -12,41 +12,72 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Caladea&family=Hind+Siliguri&family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
 </head>
 
 <body>
+    
     <header class="navbar-fixed">
-        <nav>
+        <nav class="nav-extended">
             <div class="nav-wrapper">
                 <ul class="nav-menu">
-                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;NFT Gallery</a></li>
+                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;NFT GALLERY</a></li>
                 </ul>
-                <ul class="right">
-                    <li>
-                        <form action="{% url 'search_result' %}" method="get">
-                            <input type="search" placeholder="Search NFTs" name='searched'>
-                            <button id="search" class="waves-effect waves-light btn-small" type="submit">Search</button>
-                        </form>
-                    </li>
+                <a href="#"></a>
+                <ul id="nav-mobile" class="right">
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'nft_index' %}">MY NFT'S</a></li>
-                    <li><a href="{% url 'nft_create' %}">ADD NFT</a></li>
                     <li><a href="{% url 'logout' %}">LOG OUT</a></li>
                     {% else %}
-                    <li><a href="{% url 'nft_list' %}">ALL NFT'S</a></li>
                     <li><a href="{% url 'signup' %}">SIGN UP</a></li>
                     <li><a href="{% url 'login' %}">LOG IN</a></li>
                     {% endif %}
                 </ul>
             </div>
+            <div class="container-fixed">
+                <ul class="left">
+                    <li class="search">
+                        <form action="{% url 'search_result' %}" method="get">
+                            <input id = searchbar type="search" placeholder="Search NFTs" name='searched'>
+                            <button id="search" class="material-icons white-text" type="submit">search</button>
+                        </form>
+                    </li>
+            </div>
+                <ul class="left">
+                    <li><a href="{% url 'nft_list' %}">EXPLORE</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'for_sale' %}">NFT'S FOR SALE</a></li>
+                </ul>
+                <ul class="right">
+                    <li><a href="{% url 'nft_index' %}">{{user |upper}}'S NFT'S</a></li>
+                    <li><a href="{% url 'nft_create' %}">CREATE</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </nav>
     </header>
+    <div class="container-fixed">
+        <ul class="right">
+            <li class="search">
+                <form action="{% url 'search_result' %}" method="get">
+                    <input id = searchbar type="search" placeholder="Search NFTs" name='searched'>
+                    <button id="search" class="material-icons white-text" type="submit">search</button>
+                </form>
+            </li>
+    </div>
     <main class="container">
         {% block content %} {% endblock %}
     </main>
     <footer class="page-footer">
         <div class="right">All Rights Reserved, &copy; 2022 NFT Marketplace &nbsp;</div>
     </footer>
+    <script>
+
+        $(document).ready(function(){
+            $('.collapsible').collapsible();
+          });
+        
+        </script>
 </body>
 
 </html>
