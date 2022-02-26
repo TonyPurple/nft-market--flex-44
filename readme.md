@@ -18,14 +18,20 @@ Find the NFT Application here: [NFT Gallery](https://sei44-nft-gallery.herokuapp
 ![upload](https://user-images.githubusercontent.com/94421156/155763939-b4216101-1f7a-459b-88f7-be5691ac5d23.gif)
 
 #### See an NFT you like? Hit that like button!
-![like](https://user-images.githubusercontent.com/94421156/155762791-ae176ea0-7b62-427b-8810-3b2a6af29c97.gif)
+![likebutton](https://user-images.githubusercontent.com/94421156/155828749-991b84f2-9217-49ae-85ca-2f41824384ce.gif)
 
 ##### Looking for a specific NFT? Type it in the search bar and find what you're looking for!
 ![Search](https://user-images.githubusercontent.com/94421156/155761098-dd7c0869-ad85-464e-85b7-9014f5f7d810.gif)
 
+#### Put your NFT up for sale to start the bidding
+*Seller puts their NFT up for sale*
+![sell](https://user-images.githubusercontent.com/94421156/155828821-01c60e10-3fd2-41e2-bf44-6bfc7958b663.gif)
+
+*Other users can now bid on the NFT*
+![buy](https://user-images.githubusercontent.com/94421156/155828913-2bc7e6d1-c94a-4f07-b832-a027a1a0c230.gif)
 
 ## Technology
-This application uses full CRUD operation and was created using Django, ERD created using [Whimsical](https://whimsical.com/nft-gallery-FoscsCUiVNquLtWP7YJdzM), designed on [Figma](https://www.figma.com/file/LM2YZavOxZiU9QRfAx7KSB/NFT-Marketplace?node-id=0%3A1) and managed using [Trello](https://link-url-here.org).
+This application uses full CRUD operation and was created using Django, ERD created using [Whimsical](https://whimsical.com/nft-gallery-FoscsCUiVNquLtWP7YJdzM), designed on [Figma](https://www.figma.com/file/LM2YZavOxZiU9QRfAx7KSB/NFT-Marketplace?node-id=0%3A1) and managed using [Trello](https://trello.com/b/FoG6gB4l/nft-application).
 
 - Python  
 - Django  
@@ -34,5 +40,8 @@ This application uses full CRUD operation and was created using Django, ERD crea
 - Materialize CSS
 - Heroku
 
-
 ## Next Steps 
+- To be able to transfer NFT ownership from the seller to buyer
+- Include a view count
+- Create a wallet feature where funds will be removed and added
+- Include a watchlist feature
