@@ -31,7 +31,7 @@ Find the NFT Application here: [NFT Gallery](https://sei44-nft-gallery.herokuapp
 ![buy](https://user-images.githubusercontent.com/94421156/155828913-2bc7e6d1-c94a-4f07-b832-a027a1a0c230.gif)
 
 ## Technology
-This application uses full CRUD operation and was created using Django, ERD created using [Whimsical](https://whimsical.com/nft-gallery-FoscsCUiVNquLtWP7YJdzM), designed on [Figma](https://www.figma.com/file/LM2YZavOxZiU9QRfAx7KSB/NFT-Marketplace?node-id=0%3A1) and managed using [Trello](https://link-url-here.org).
+This application uses full CRUD operation and was created using Django, ERD created using [Whimsical](https://whimsical.com/nft-gallery-FoscsCUiVNquLtWP7YJdzM), designed on [Figma](https://www.figma.com/file/LM2YZavOxZiU9QRfAx7KSB/NFT-Marketplace?node-id=0%3A1) and managed using [Trello](https://trello.com/b/FoG6gB4l/nft-application).
 
 - Python  
 - Django  
